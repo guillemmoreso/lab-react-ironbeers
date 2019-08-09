@@ -14,8 +14,8 @@ For this project, we will be using an API so that we can retrieve the data of th
 
 | Method | Endpoint | Response (200)     | Action |
 | ------ | -------- | ------------------ | ------ |
-| GET    | /all     | Beers[]            | Get all the beers from the DB |
-| GET    | /single/:id | { Beer }        | Get the specific beer      |
+| GET    | /    | Beers[]            | Get all the beers from the DB |
+| GET    | /:id | { Beer }        | Get the specific beer      |
 | GET    | /random     | { Beer }        | Get a random beer from the DB |
 | POST   | /new        | { Message: OK } | Create a new beer (The fields are specify on the instructions) NOT WORKING!!|
 | GET    | /search?q=`{query}` | Beers[10] | Search with a RegEx using the `query` specified and return the first ten result |
