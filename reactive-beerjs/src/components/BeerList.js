@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class BeerList extends Component {
   state = {
     beers: [],
+    loading: true,
   };
 
   componentDidMount() {
@@ -13,6 +14,7 @@ class BeerList extends Component {
       .then(({ data }) => {
         this.setState({
           beers: data,
+          loading: false,
         });
       })
       .catch(error => {
@@ -21,27 +23,29 @@ class BeerList extends Component {
   }
 
   render() {
-    const { beers } = this.state;
+    const { beers, loading } = this.state;
     return (
-      <div>
-        {beers.map(beer => {
-          return (
-            <div>
-              <Link key={beer._id} to={`/beers/${beer._id}`}>
-                <img
-                  className="beer-img"
-                  src={beer.image_url}
-                  alt={beer.name}
-                />
-              </Link>
-              <div className="beer-info">
-                <h3>{beer.name}</h3>
-                <span>{beer.tagline}</span>
-                <small>Created by: {beer.contributed_by}</small>
+      <div className="Loading">
+        {!loading &&
+          beers.map(beer => {
+            return (
+              <div>
+                <Link key={beer._id} to={`/beers/${beer._id}`}>
+                  <img
+                    className="beer-img"
+                    src={beer.image_url}
+                    alt={beer.name}
+                  />
+                </Link>
+                <div className="beer-info">
+                  <h3>{beer.name}</h3>
+                  <span>{beer.tagline}</span>
+                  <small>Created by: {beer.contributed_by}</small>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}{' '}
+        {loading && <div>loading...</div>}
       </div>
     );
   }
