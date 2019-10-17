@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 class Beer extends Component {
   state = {
@@ -40,6 +41,9 @@ class Beer extends Component {
     const { beer, loading } = this.state;
     return (
       <div className="Loading">
+        <div>
+          <Header />
+        </div>
         {!loading && (
           <div>
             <img className="beer-img" src={beer.image_url} alt="beer"></img>

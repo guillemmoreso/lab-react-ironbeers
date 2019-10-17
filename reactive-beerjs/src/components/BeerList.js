@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 class BeerList extends Component {
   state = {
@@ -26,6 +27,9 @@ class BeerList extends Component {
     const { beers, loading } = this.state;
     return (
       <div className="Loading">
+        <div>
+          <Header />
+        </div>
         {!loading &&
           beers.map(beer => {
             return (

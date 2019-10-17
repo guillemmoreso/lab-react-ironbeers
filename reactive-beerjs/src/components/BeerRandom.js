@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 class BeerRandom extends Component {
   state = {
@@ -25,6 +26,9 @@ class BeerRandom extends Component {
     const { beerRandom, loading } = this.state;
     return (
       <div className="Loading">
+        <div>
+          <Header />
+        </div>
         {!loading && (
           <div>
             <img
